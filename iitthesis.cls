@@ -1,5 +1,6 @@
 
 %%%   IITTHESIS DOCUMENT CLASS FiLE --  Version 2 (Updated on 11/11/2003 by Babak Hamidian)
+%%%	Updated Feb 2018 by Keith Pedersen (KDP), hosted on (https://github.com/keith-pedersen/iitthesis)
 %%%   for LaTeX version 2e - 05/30/2003
 %%% =====================================================================
 %%% =====================================================================
@@ -89,7 +90,9 @@
 \setlength{\parskip}{10pt} 
 \setlength{\parindent}{0.5in}
 
-
+% KDP: IIT style guide requires letter sized paper
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11in}
 
 %    ****************************************
 %    *        Title Page Commands           *
