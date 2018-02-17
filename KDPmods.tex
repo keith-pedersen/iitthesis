@@ -7,7 +7,7 @@
 
 \begin{document}
 
-\title{Bold math in section headings with ``{\tt iitthesis.cls}''}
+\title{Modifications to ``{\tt iitthesis.cls}''}
 
 %~ \title{Bold math in section headings with}
 
@@ -32,7 +32,7 @@ This acknowledgment is here so the table of contents is not mangled.
 
 \textpages
 
-\Chapter{The only chapter}
+\Chapter{Bold math in section headings}
 
 \Section{A section about $\sqrt{x^2+y^2}$}\label{sec:no-bold-in-text}
 
@@ -83,11 +83,45 @@ This is a manual procedure; be careful! If you change the main heading,
 you have to change the TOC heading. Notice how the TOC doesn't match this section?
 
 \Subsection{A subsection about $\boldsymbol{y}$}
-
+%
 Subsections do not appear in the table of contents,
 so we don't need an optional argument for the TOC. 
 Just use \verb|\boldsymbol| for math in the heading.
 
+\Chapter{Optional punctuation arguments for subsections and subsubsections}
 
+\Section{The only section (to talk about subsections)}.
+
+\Subsection{The automatic period}
+% 
+Periods are automatically appended to the subsection (and subsubsection) headings. 
+
+\Subsection{Don't pass your own period.}
+% 
+If you pass a period in the subsection heading, you will get two.
+%
+\begin{quotation}
+	\verb|\Subsection{Don't pass your own period.}|
+\end{quotation}
+
+\Subsection[?]{Do all subsections have to end in a period}
+%
+No! With my modification, an optional argument can be passed to send
+some other punctuation. This optional argument defaults to a period
+(i.e.\ if you want a period, you don't have to pass it).
+%
+\begin{quotation}
+	\verb|\Subsection[?]{Do all subsections have to end in a period}|
+\end{quotation}
+
+\Subsubsection[!]{It also work for subsubsections} Huzzah!
+
+\Subsection[;]{Be careful}
+% 
+you can pass any character to be use as punctuation, but not all work with the style guide.
+% 
+\begin{quotation}
+	\verb|\Subsection[;]{Be careful}|
+\end{quotation}
 
 \end{document}

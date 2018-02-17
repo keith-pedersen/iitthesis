@@ -847,22 +847,23 @@ Page\par}}
 % SUBSECTION
 % 
 % Subsection names are typed italic bold, and they are not included in tha table of contents.
-\newcommand{\Subsection}[1]{%
+% KDP: Optional argument to supply alternate punctuation (i.e. ?, !). Defaults to period.
+\newcommand{\Subsection}[2][.]{%
   \refstepcounter{subsection}  
   \noindent
-  {{\textbf{\thesubsection\space\space{#1.}}}}
+  {{\textbf{\thesubsection\space\space{#2#1}}}}
   % \addtocontents{toc}{\protect\vspace{-10pt}}   % activate to put in toc
   % \addcontentsline{toc}{subsection}{\protect    % activate to put in toc
-   %    \makebox[0.3in][r]{\thesubsection.} \hspace*{3pt}#1}    % activate to put in toc
+   %    \makebox[0.3in][r]{\thesubsection.} \hspace*{3pt}#2}    % activate to put in toc
     }
-
 
 % SUBSUBSECTION
 % Subsubsection names are typed italic,and they are not included in the table of contents.
-\newcommand{\Subsubsection}[1]{%
+% KDP: Optional argument to supply alternate punctuation (i.e. ?, !). Defaults to period.
+\newcommand{\Subsubsection}[2][.]{%
   \refstepcounter{subsubsection}
   \noindent
-   {\textbf{\thesubsubsection\space\space{#1.}}}
+   {\textbf{\thesubsubsection\space\space{#2#1}}}
  }
 
 
