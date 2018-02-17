@@ -1,0 +1,10 @@
+Author: Keith Pedersen (KDP), Keith.David.Pedersen@gmail.com, www.hepguy.com
+This git repo manages changes I (KDP) have made to the iitthesis.cls file.
+IIT's font files are supplied for convenience, though I do not expect to edit them.
+Bibliography packages (e.g. apacite) are not supplied, since I will not manage them, 
+and they are supported by their own authors (e.g. apacite is on CTAN).
+
+Wherever you place this git repo directory <iithesis/>,
+you will need links to the class and font files in your main compilation directory (MCD)
+(i.e. where "YourThesis.tex" lives). I place my <iithesis/> folder directly in my MCD. 
+If you do the same, you can run the "makeLinks.sh" script in the MCD to make the required links.
