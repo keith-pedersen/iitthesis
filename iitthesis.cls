@@ -82,12 +82,14 @@
 % See pg. 24 of "A Guide to Latex" by Helmut Kopka and Patrick W Daly
 % for details.
 
-\setlength{\textheight}{9in} 
+\setlength{\topmargin}{-0.5in} % KDP: Page numbers should be 0.5 in from top, default \topmargin is 1in
+\settoheight{\headheight}{88} % KDP: The header only contains page numbers, measure their length
+\setlength{\headsep}{\dimexpr(0.5in-\headheight)\relax} % Top margin should be 1 in; add 0.5 in minus height of headers
+\setlength{\textheight}{9.in}
 \setlength{\textwidth}{6in}
-\setlength{\topmargin}{-0.5in}
 \setlength{\oddsidemargin}{0.5in}
 \setlength{\evensidemargin}{0.5in}
-\setlength{\parskip}{10pt} 
+\setlength{\parskip}{10pt}
 \setlength{\parindent}{0.5in}
 
 % KDP: IIT style guide requires letter sized paper
