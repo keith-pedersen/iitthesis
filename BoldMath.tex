@@ -1,0 +1,93 @@
+\documentclass{iitthesis}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+
+\begin{document}
+
+\title{Bold math in section headings with ``{\tt iitthesis.cls}''}
+
+%~ \title{Bold math in section headings with}
+
+%Thesis Proposal}
+\author{Keith Pedersen}
+\degree{}
+\dept{}
+\date{Feb 2018}
+
+%\coadvisortrue           % add co-advisor. activate it by removing % symbol to add co-advisor
+\maketitle
+
+\prelimpages
+
+\begin{acknowledgement}     % acknowledgement environment, this is optional
+\par 
+This acknowledgment is here so the table of contents is not mangled.
+\end{acknowledgement}
+% Table of Contents
+\tableofcontents
+\clearpage
+
+\textpages
+
+\Chapter{The only chapter}
+
+\Section{A section about $\sqrt{x^2+y^2}$}\label{sec:no-bold-in-text}
+
+This section is about math. 
+But notice how the math is not bolded in the section heading?
+This is because \verb|\textbf| does not alter the math environment \verb|$\sqrt{x^2+y^2}$|.
+
+\Section{A section about bolded $\boldsymbol{\sqrt{x^2+y^2}}$}\label{sec:bold-in-TOC}
+
+I can bold the math in the section heading by using the {\tt amsmath} package 
+(i.e.\ \verb|\usepackage{amsmath}|), and wrapping {\tt \verb|\boldmath|} around my math
+\begin{quotation}
+	\verb|\Section{A section about $\boldsymbol{\sqrt{x^2+y^2}}$}|
+\end{quotation}
+But notice how the math is still bolded in the table of contents (TOC)?
+There is no way to tell the TOC not to use \verb|\boldmath|
+
+\Section[Bold $\vec{a}$]{Bold $\boldsymbol{\vec{a}}$}
+
+What we'd like is one heading for the text using \verb|\boldsymbol|, 
+and one for the TOC which doesn't use \verb|\boldsymbol|.
+This is what my modified \verb|\Section| command does
+via its optional [bracketed] argument, 
+which is how this section was declared.
+Notice how the math is bolded in the sub-section heading, 
+but not in the TOC? 
+
+To use the modified \verb|\Section|, pass the heading you want 
+to appear in the TOC as the optional [bracketed] argument (no \verb|\boldmath|) 
+and the heading for the text as the main argument (with \verb|\boldmath|)
+\begin{quotation}
+	\begin{verb}
+		\Section[Bold $\vec{a}$]{Bold $\boldsymbol{\vec{a}}$}
+	\end{verb}
+\end{quotation}
+If the optional argument is not supplied
+\begin{quotation}
+	\begin{verb}
+		\Section{A section about bolded $\boldsymbol{\sqrt{x^2+y^2}}$}
+	\end{verb}
+\end{quotation}
+as Sections~\ref{sec:no-bold-in-text}~\&~\ref{sec:bold-in-TOC} were declared, 
+then the TOC will use the main argument as the optional argument.
+
+\Section[Careful: $e^{-x}$]{Careful: $\boldsymbol{\exp(-x)}$}
+
+This is a manual procedure; be careful! If you change the main heading, 
+you have to change the TOC heading. Notice how the TOC doesn't match this section?
+
+\Subsection{A subsection about $\boldsymbol{y}$}
+
+Subsections do not appear in the table of contents,
+so we don't need an optional argument for the TOC. 
+Just use \verb|\boldsymbol| for math in the heading.
+
+
+
+\end{document}

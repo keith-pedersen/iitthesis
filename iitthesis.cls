@@ -821,15 +821,22 @@ Page\par}}
 % SECTION
 %
 % Section names are bold face typed using \bf.
-\newcommand{\Section}[1]{%
+% 
+% KDP: Added dblarg so you can send optional argument for TOC.
+% Note: #1 is the optional argument, #2 is the mandatory argument.
+% When no optional argument is supplied, #1 defaults to #2.
+% This is useful if you want boldsymbol math in the text, but non-bolded math in TOC.
+
+\newcommand{\Section}{\@dblarg\@Section}
+\def\@Section[#1]#2{%
   \refstepcounter{section}
   \noindent
-   \setbox\@tempboxa\hbox{\bf\thesection\space\space{#1}}%
+   \setbox\@tempboxa\hbox{\bf\thesection\space\space{#2}}%
    \ifdim \wd\@tempboxa >\hsize         % IF it is longer than one line, use indentation
     \vskip 1pt \noindent\ssp \hangindent 0.36in 
-   {\bf\thesection\space\space{#1}\par} \dsp  
+   {\bf\thesection\space\space{#2}\par} \dsp  
      \else                              % ELSE  center.
-      {\bf\thesection\space\space{#1}}   
+      {\bf\thesection\space\space{#2}}   
    \fi
   \addtocontents{toc}{\protect\vspace{-10pt}}
   \addcontentsline{toc}{section}{\protect
