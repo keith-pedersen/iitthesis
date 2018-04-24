@@ -1,6 +1,6 @@
 
 %%%   IITTHESIS DOCUMENT CLASS FiLE --  Version 2 (Updated on 11/11/2003 by Babak Hamidian)
-%%%	Updated Feb 2018 by Keith Pedersen (KDP), hosted on (https://github.com/keith-pedersen/iitthesis)
+%%%	Updated 2018 by Keith Pedersen (KDP), hosted on (https://github.com/keith-pedersen/iitthesis)
 %%%   for LaTeX version 2e - 05/30/2003
 %%% =====================================================================
 %%% =====================================================================
@@ -35,6 +35,8 @@
 
 \NeedsTeXFormat{LaTeX2e} 
 \ProvidesClass{iitthesis}[2003/05/30,Illinois Institute of Technology Thesis Class]
+
+\usepackage{calc} % KDP: for signature
 
 %   **********************************
 %   * Interline Spacing Commands     *
@@ -107,6 +109,7 @@
 \renewcommand{\date}[1]{\gdef\@date{#1}}
 \newif\ifcopyrightnotice
 \newif\ifcoadvisor
+\newif\ifsignature
 \copyrightnoticefalse   % default is without copyright page
 \coadvisorfalse         % default is without co-advisor
 
@@ -171,12 +174,25 @@
  \vspace{0.5in}
  \begin{flushright}
  \ssp
+ \ifsignature % KDP: created a new if statement for inserting an advisor signature
+  \def\thesignature{\includegraphics[scale=1]{AdvisorSignature}} % the image is inserted at scale=1 and must be called AdvisorSignature.*
+ % We now declare and set a signature height. This will be used for vertical alignment
+ \newlength\signatureheight
+ \setlength\signatureheight{\heightof{\thesignature}}
+ % I (KDP) have kerned a vertical space that adjusts for the height of the signature image,
+ % to align the signature line to the same height as when no signature image is inserted.
+ % This ONLY works if the right edge of the signature image ends JUST AFTER the signature line
+ % AND the bottom edge of the signature image ends JUST BELOW the word "Advisor"
+  \vspace*{\dimexpr(5.7ex-\signatureheight)\relax}
+ \hfil{\thesignature}
+ \else
  \hfil{Approved \rule{2in}{0.01in}\\}
  \hfil
  \makebox[2in][c]{Advisor} \\
  \ifcoadvisor
  \coadvisortype
  \fi
+ \fi 
  \end{flushright}
  \vfill
  \begin{center}
