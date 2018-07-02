@@ -5,7 +5,7 @@
 ln -s iitthesis/iitthesis.cls 
 ln -s iitthesis/font11.clo 
 ln -s iitthesis/font12.clo
-ln -s iitthesis/MakeThesis.sh
+ln -s iitthesis/makeThesis.sh
 ln -s iitthesis/fontembed.sh
 ln -s iitthesis/regexRemove.py
 ln -s iitthesis/removeCitations_ListOfFigures.py
