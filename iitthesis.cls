@@ -36,7 +36,7 @@
 \NeedsTeXFormat{LaTeX2e} 
 \ProvidesClass{iitthesis}[2003/05/30,Illinois Institute of Technology Thesis Class]
 
-\usepackage{calc} % KDP: for signature
+\usepackage{calc} % KDP: for advisor signature
 
 %   **********************************
 %   * Interline Spacing Commands     *
@@ -109,7 +109,7 @@
 \renewcommand{\date}[1]{\gdef\@date{#1}}
 \newif\ifcopyrightnotice
 \newif\ifcoadvisor
-\newif\ifsignature
+\newif\ifsignature % KDP: switch for advisor signature
 \copyrightnoticefalse   % default is without copyright page
 \coadvisorfalse         % default is without co-advisor
 
@@ -183,7 +183,7 @@
  % to align the signature line to the same height as when no signature image is inserted.
  % This ONLY works if the right edge of the signature image ends JUST AFTER the signature line
  % AND the bottom edge of the signature image ends JUST BELOW the word "Advisor"
-  \vspace*{\dimexpr(5.7ex-\signatureheight)\relax}
+  \vspace*{\dimexpr(5.7ex-\signatureheight)\relax} % 5.7ex was the result of manually kerning until the line was in the right place
  \hfil{\thesignature}
  \else
  \hfil{Approved \rule{2in}{0.01in}\\}
@@ -842,6 +842,8 @@ Page\par}}
 % Note: #1 is the optional argument, #2 is the mandatory argument.
 % When no optional argument is supplied, #1 defaults to #2.
 % This is useful if you want boldsymbol math in the text, but non-bolded math in TOC.
+% This functionality is redundant with Python program, 
+% but I have kept it so I remember how to use dblarg.
 
 \newcommand{\Section}{\@dblarg\@Section}
 \def\@Section[#1]#2{%
@@ -862,7 +864,7 @@ Page\par}}
 
 % SUBSECTION
 % 
-% Subsection names are typed italic bold, and they are not included in tha table of contents.
+% Subsection names are typed italic bold, and they are not included in the table of contents.
 % KDP: Optional argument to supply alternate punctuation (i.e. ?, !). Defaults to period.
 \newcommand{\Subsection}[2][.]{%
   \refstepcounter{subsection}  

@@ -1,5 +1,9 @@
 *.aux
-*.toc
+*.bbl
+*.blg
 *.lof
+*.toc
 *.log
+*.out
 *.pdf
+__pycache__*
